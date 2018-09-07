@@ -1,0 +1,4 @@
+blobs/*.zip
+blobs/*.tar.gz
+blobs/*.tar.bz2
+build/
