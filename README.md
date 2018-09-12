@@ -2,8 +2,59 @@
 
 ![Icon](./icon.png)
 
-This project illustrates how to use a CycleCloud cluster to run a genome analysis. It uses [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) to align experimentally-derived RNA sequences to a reference DNA sequence.
+This project illustrates how to use a CycleCloud cluster to run a genome analysis. It uses [Bowtie2][] to align experimentally-derived RNA sequences to a reference DNA sequence.
 
+## Prepare Cluster Template
+
+* Install Git
+
+  ```shell
+  [user@cc ~]$ sudo yum install git
+  ```
+
+* Clone [GenomeAnalysis Project][]
+
+  ```shell
+  [user@cc ~]$ mkdir projects
+  [user@cc ~]$ cd projects
+  [user@cc projects]$ git clone https://github.com/gingi/cyclecloud-genomeanalysis
+  [user@cc projects]$ cd cyclecloud-genomeanalysis
+  [user@cc cyclecloud-genomeanalysis]$ 
+  ```
+
+* Upload project to locker
+
+  ```shell
+  [user@cc cyclecloud-genomeanalysis]$ cyclecloud project upload azure-storage
+  ```
+
+* Import template
+
+  ```shell
+  [user@cc cyclecloud-genomeanalysis]$ cyclecloud import_template -f template/genomeanalysis.txt
+  ```
+
+* Upload [Anaconda Project][]
+
+  ```shell
+  [user@cc cyclecloud-genomeanalysis]$ cd ..
+  [user@cc projects]$ git clone https://github.com/CycleCloudCommunity/anaconda
+  [user@cc projects]$ cd anaconda
+  [user@cc anaconda]$ cyclecloud project upload azure-storage
+  ```
+
+## Prepare Data
+
+## Links
+ [Anaconda Project]: https://github.com/CycleCloudCommunity/anaconda
+ [GATK tutorials]: https://software.broadinstitute.org/gatk/documentation/topic?name=tutorials
+ [GenomeAnalysis Project]: https://github.com/gingi/cyclecloud-genomeanalysis
+ [Maize genome sequence]: ftp://ftp.ebi.ac.uk/pub/databases/ena/wgs/public/lp/LPUQ01.fasta.gz
+
+ [Bowtie2]: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+ [SRA Toolkit]: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
+
+[Full-length cDNA library](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP067440) for [whole-genome sequencing study](https://www.ncbi.nlm.nih.gov/pubmed/28605751).
 
 ## Contributing
 
