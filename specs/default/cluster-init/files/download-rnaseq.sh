@@ -6,4 +6,4 @@
 
 ACCESSION=$(sed -n -e ${SGE_TASK_ID}p ${ACCFILE})
 
-fasterq-dump $ACCESSION --skip-technical -O $OUTPATH
+fasterq-dump $ACCESSION --skip-technical -O $DATAPATH

@@ -4,7 +4,7 @@
 
 BASE="$(cd "$(dirname "$0")"; pwd -P)"
 
-export OUTPATH=/mnt/exports/shared/data
+export DATAPATH=/mnt/exports/shared/data
 export GENOME_FTPBASE=ftp://ftp.ensemblgenomes.org/pub/release-40/plants/fasta/zea_mays/dna
 export ACCFILE="$BASE/rnaseq-accessions.txt"
 
@@ -14,7 +14,7 @@ qsub="qsub -cwd -V"
 
 function download_genome {
     chroms=$(curl -s -l $GENOME_FTPBASE/ | grep "^${CHR_PREFIX}")
-    pushd $OUTPATH
+    pushd $DATAPATH
     for chr in $chroms; do
         $qsub -N "download-genome" $BASE/download-genome.sh $chr
     done
@@ -23,7 +23,7 @@ function download_genome {
 
 function download_rnaseq {
     accs=$(cat $ACCFILE | wc -l)
-    pushd $OUTPATH
+    pushd $DATAPATH
     $qsub -t 1:$accs -N "download-rnaseq" $BASE/download-rnaseq.sh
     popd
 }

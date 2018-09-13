@@ -3,4 +3,6 @@
 # Licensed under the MIT License.
 
 chrgz="$@"
-curl -s -O "$GENOME_FTPBASE/$chrgz"
+index="$(chr_name $chrgz)"
+
+bowtie2-build "$chrgz" "index/$index" && touch "index/$index.done"
