@@ -42,10 +42,10 @@ list_genome | while read chrgz; do
     chr="$(chr_name $chrgz)"
     chrindex="index/$chr"
     list_reads | while read readsfile; do
-        # -l h_rt: Prevent jobs from running >2h
+        # -l h_rt: Prevent jobs from running >1h
         $qsub -hold_jid "index-$chr" \
               -N "align-$chr-${readsfile/\.fastq/}" \
-              -l h_rt=02:00:00 \
+              -l h_rt=01:00:00 \
               "$BASE/align-reads.sh" "$chrindex" "$readsfile"
     done
 done

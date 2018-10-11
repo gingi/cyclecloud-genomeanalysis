@@ -28,5 +28,6 @@ function download_rnaseq {
     popd
 }
 
+mkdir -p "$DATAPATH"
 download_genome
 download_rnaseq

@@ -9,3 +9,4 @@ SCRIPTS_DIR="${HOMEDIR}/genomeanalysis"
 
 mkdir -p "$SCRIPTS_DIR"
 cp -r "$CYCLECLOUD_SPEC_PATH"/files/* "$SCRIPTS_DIR/"
+chmod +x "$SCRIPTS_DIR"/*.sh
